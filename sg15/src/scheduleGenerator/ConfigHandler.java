@@ -9,6 +9,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+// SWAP 2, TEAM 6
+// Now inputting and outputing the Config class to a file, has been factored out into it's own class.
+// Could in the future had different ways tho save the config as different ConfigHandlers
 public class ConfigHandler {
 	/**
 	 * Dumps data to the file schedule_data.ser.

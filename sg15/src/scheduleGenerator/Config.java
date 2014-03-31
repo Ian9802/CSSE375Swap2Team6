@@ -17,6 +17,9 @@ import javax.swing.JOptionPane;
  *
  * @author schneimd
  */
+// SWAP 2, TEAM 6
+// REFACTORING FOR ENHANCEMENT FROM BAD SMELL
+// Refactored some of the Config class to ConfigHandler
 // SWAP 1, TEAM 5
 // SMELL: large class - Config is a very large class that could have been a lot shorter.
 public class Config extends javax.swing.JFrame {
