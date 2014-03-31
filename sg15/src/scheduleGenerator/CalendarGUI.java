@@ -178,7 +178,8 @@ public class CalendarGUI extends javax.swing.JFrame {
 	 */
 	public void fillTableMonthBack() {
 		// SWAP 2, TEAM 6
-		// Primitive Obsession handled and method shortened.
+        // REFACTORING FOR ENHANCEMENT FROM BAD SMELL
+		// Primitive Obsession handled and method shortened. Now it can be maintained easier
 		// SWAP 1, TEAM 5
 		/*
 		 * SMELL: Primitive Obsession - There are a lot of instances of primitive types that can be cleaned. 
@@ -324,6 +325,7 @@ public class CalendarGUI extends javax.swing.JFrame {
 					}
 				});
 		// SWAP 2, TEAM 6
+        // REFACTORING FOR ENHANCEMENT FROM BAD SMELL
 		// Many of the items were pulled out into other methods and modified.
 		// Much of the code had to remain because they are establishing GUI controls.
 		// SWAP 1, TEAM 5

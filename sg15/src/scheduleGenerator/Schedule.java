@@ -77,7 +77,8 @@ public class Schedule extends Thread implements Serializable {
      * 
       */
      // SWAP 2, TEAM 6
-     // Lots have been extracted.
+     // REFACTORING FOR ENHANCEMENT FROM BAD SMELL
+     // Lots have been extracted, therefor making this method easier to work with and maintain
      // SWAP 1, TEAM 5
      // SMELL: long method - calculateNextMonth has a really long method with low cohesion.
      private synchronized void calculateNextMonth() {

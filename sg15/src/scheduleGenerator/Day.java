@@ -10,6 +10,7 @@ import java.util.ArrayList;
  *         Created Oct 15, 2012.
  */
 // SWAP 2 TEAM 6
+// REFACTORING FOR ENHANCEMENT FROM BAD SMELL
 // Added in the getNumOfDay method to add more responsibility to this class. Moving that code
 //    here can get rid of code duplication elsewhere.
 // SWAP 1 TEAM 5

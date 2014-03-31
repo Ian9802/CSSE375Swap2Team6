@@ -11,6 +11,7 @@ import java.util.Scanner;
  * @author Mason Schneider and Orion Martin. Created Oct 8, 2012.
  */
 // SWAP 2, TEAM 6
+// REFACTORING FOR ENHANCEMENT FROM BAD SMELL
 // Smell fixes by changing to config handler class.
 // SWAP 1, TEAM 5
 // SMELL: Divergent Change - Main first of all shouldn't contain this many methods. 
