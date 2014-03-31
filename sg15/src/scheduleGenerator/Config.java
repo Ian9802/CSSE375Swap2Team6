@@ -41,35 +41,18 @@ public class Config extends javax.swing.JFrame {
         
 
         int dayNum = 0;
+
+        String[] daysOfWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
         
     	for(Day day: days) {
-    		if(day.getNameOfDay().equals("Sunday")) {
-    			this.dayChecks[dayNum].doClick();
-    		} else if(day.getNameOfDay().equals("Monday")) {
-    			
-    			dayNum = 1;    			
-    			this.dayChecks[dayNum].doClick();
-    		} else if(day.getNameOfDay().equals("Tuesday")) {
-    			
-    			dayNum = 2;    			
-    			this.dayChecks[dayNum].doClick();
-    		} else if(day.getNameOfDay().equals("Wednesday")) {
-    			
-    			dayNum = 3;    			
-    			this.dayChecks[dayNum].doClick();
-    		} else if(day.getNameOfDay().equals("Thursday")) {
-    			
-    			dayNum = 4;    			
-    			this.dayChecks[dayNum].doClick();
-    		} else if(day.getNameOfDay().equals("Friday")) {
-    			
-    			dayNum = 5;
-    			this.dayChecks[dayNum].doClick();
-    		} else if(day.getNameOfDay().equals("Saturday")) {
-    			
-    			dayNum = 6;
-    			this.dayChecks[dayNum].doClick();
-    		}
+
+            // SWAP 2 TEAM 6
+            // Removed switch statement so there is much less duplicate code.
+
+            dayNum = day.getNumOfDay();
+
+            this.dayChecks[dayNum].doClick();
+
             //SWAP 1 TEAM 5 - We the duplicate code outside the array for cleaner code.
             /*
              * QUALITY CHANGES

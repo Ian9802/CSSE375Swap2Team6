@@ -46,15 +46,14 @@ public class ConfigHandler {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public void recallConfigFile(File path, ArrayList<Day> days, 
-			ArrayList<Worker> workers, Schedule schedule) 
+	public void recallConfigFile(File path)
 					throws ClassNotFoundException, IOException{
 		if(path.exists()) {
 			FileInputStream recallConfig = new FileInputStream(path);
 			ObjectInputStream fileRecall = new ObjectInputStream(recallConfig);
-			days = (ArrayList<Day>) fileRecall.readObject();
-			workers = (ArrayList<Worker>) fileRecall.readObject();
-			schedule = (Schedule) fileRecall.readObject();
+            ArrayList<Day> days = (ArrayList<Day>) fileRecall.readObject();
+            ArrayList<Worker> workers = (ArrayList<Worker>) fileRecall.readObject();
+            Schedule schedule = (Schedule) fileRecall.readObject();
 			HTMLGenerator.setTables((String)fileRecall.readObject());
 			
 			fileRecall.close();

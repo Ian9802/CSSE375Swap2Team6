@@ -9,6 +9,9 @@ import java.util.ArrayList;
  * @author schneimd.
  *         Created Oct 15, 2012.
  */
+// SWAP 2 TEAM 6
+// Added in the getNumOfDay method to add more responsibility to this class. Moving that code
+//    here can get rid of code duplication elsewhere.
 // SWAP 1 TEAM 5
 // SMELL: Data class - This only has data and does not have any responsiblities.
 public class Day implements Serializable{
@@ -67,4 +70,10 @@ public class Day implements Serializable{
 	public String getNameOfDay() {
 		return this.dayOfWeek;
 	}
+
+    public int getNumOfDay() {
+        String[] daysOfWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
+        return java.util.Arrays.asList(daysOfWeek).indexOf(this.getNameOfDay());
+    }
 }

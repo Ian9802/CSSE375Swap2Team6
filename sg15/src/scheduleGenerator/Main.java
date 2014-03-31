@@ -2,6 +2,7 @@ package scheduleGenerator;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * This class handles the interaction of one frame to another as well as
@@ -18,7 +19,8 @@ public class Main {
 
 	static ArrayList<Day> days;
 	static ArrayList<Worker> workers;
-	static File path = new File("schedule_data.ser");
+    private static File standardPath = new File("schedule_data.ser");
+    private static File path;
 	
 	// Configures days.
 	static Config config = new Config();
@@ -36,24 +38,46 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//path = new File("schedule_data.ser");
-		//config = new Config();
-		
-		//Code to open the config file.
-		
-		try {
-			conH.recallConfigFile(path, days, workers, schedule);
-			if(getSchedule() != (null)){
-				cal = new CalendarGUI(getSchedule());
-				//config.setVisible(true);
-				cal.setVisible(true);
-			} else{
-				config.setVisible(true);
-			}
-		} catch (Exception exception) {
-			exception.printStackTrace();
-			
-		}
+        // SWAP 2, TEAM 06
+        // BONUS FEATURE
+        // Now have the option to load a schedule from file via the command line
+        // Before this was a hard coded value, which helped lead to code smell.
+        //path = new File("schedule_data.ser");
+        config = new Config();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter schedule file name:");
+        String input = scanner.next();
+        scanner.close();
+        if(input.length() >=5){
+            System.out.println(input.substring(input.length()-5, input.length()));
+        }
+        if (input == null || input.isEmpty()){
+            path = standardPath;
+        }
+        else if(input.length() >=5){
+            if(input.substring(input.length()-5, input.length()).equals(".ser")){
+                path = new File(input);
+            }
+            else{
+                path = new File(input + ".ser");
+            }
+        }
+        else{
+            path = new File(input + ".ser");
+        }
+        // Code to open the config file.
+
+        try {
+            conH.recallConfigFile(path);
+            if (getSchedule() != (null)) {
+                cal = new CalendarGUI(getSchedule());
+                cal.setVisible(true);
+            } else {
+                config.setVisible(true);
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
 	}
 
 	//Changes visible of config.
