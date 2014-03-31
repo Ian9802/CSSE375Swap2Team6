@@ -47,7 +47,9 @@ public class Config extends javax.swing.JFrame {
     	for(Day day: days) {
 
             // SWAP 2 TEAM 6
-            // Removed switch statement so there is much less duplicate code.
+            // REFACTORING FOR ENHANCEMENT FROM BAD SMELL
+            // Removed switch statement so there is much less duplicate code. Now we can easily
+            // the order of the days of the week by changing the order in the Array
 
             dayNum = day.getNumOfDay();
 

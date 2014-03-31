@@ -40,7 +40,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
         // SWAP 2, TEAM 06
-        // BONUS FEATURE
+        // BONUS FEATURE / FURTHER ELABORATION (Our group didn't do an additional feature last time so we added one)
         // Now have the option to load a schedule from file via the command line
         // Before this was a hard coded value, which helped lead to code smell.
         //path = new File("schedule_data.ser");
