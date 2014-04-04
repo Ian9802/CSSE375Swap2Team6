@@ -98,7 +98,7 @@ public class WorkerSetup extends javax.swing.JFrame {
 		
 		//SWAP 2, TEAM 4
 		//REFACTORING FOR ENHANCEMENT FROM BAD SMELL
-		//We thought that for such a small smell moving the method would be too exteme
+		//We thought that for such a small smell moving the method would be too extreme
 		//	so instead of doing this we moved the line of code that touched main into the constructor
 		//	because we thought it was more applicable there.
 		//This puts the line of code in a more relevant part making it more understandable.

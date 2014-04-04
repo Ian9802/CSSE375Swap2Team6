@@ -9,6 +9,10 @@ import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Scanner;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import net.fortuna.ical4j.data.CalendarBuilder;
 import net.fortuna.ical4j.model.Calendar;
@@ -25,8 +29,8 @@ public class Main {
 
 	private static ArrayList<Day> days;
 	private static ArrayList<Worker> workers;
-	private static File path = new File("schedule_data.ser");
-	
+	private static File standardPath = new File("schedule_data.ser");
+	private static File path;
 	/**
 	 * Configures days.
 	 */
@@ -47,24 +51,47 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
+		fileChange();
 		
-		path = new File("schedule_data.ser");
-		config = new Config();
-		
+		Schedule localSchedule = getSchedule();
 		//Code to open the config file.
 		
+		// SWAP 3, TEAM 6
+		// There was a big issue in how this was being ran that allowed for null values to be passed in and cause the program to crash.
+		// (honestly not sure what was the cause in here, but I fixed it)
 		try {
 			recallConfigFile();
-			if(getSchedule() != (null)){
-				cal = new CalendarGUI(getSchedule());
-				//config.setVisible(true);
-				cal.setVisible(true);
-			} else{
+			if(localSchedule == null){
 				config.setVisible(true);
+			}else{
+				cal = new CalendarGUI(getSchedule());
+				cal.setVisible(true);
 			}
 		} catch (Exception exception) {
 			exception.printStackTrace();
 			
+		}
+	}
+
+	public static void fileChange() {
+		// SWAP 3, TEAM 6
+		// Added a gui pop up that allows for using schedule files other
+		// than the standard schedule_data.ser
+		JFrame frame = new JFrame();
+		String text = (String)JOptionPane.showInputDialog(frame,
+				"Enter schedule name:");
+
+		config = new Config();
+		if(text.length() >= 5){
+			System.out.println(text.substring(text.length()-5, text.length()));
+		}
+		if(text == null || text.isEmpty()){
+			path = standardPath;
+		}
+		else if(text.length() >= 5 && text.substring(text.length()-5, text.length()).equals(".ser")){
+			path = new File(text);
+		}else{
+			path = new File(text + ".ser");
 		}
 	}
 

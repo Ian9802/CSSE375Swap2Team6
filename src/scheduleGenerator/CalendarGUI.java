@@ -48,6 +48,8 @@ public class CalendarGUI extends javax.swing.JFrame {
 	 * 
 	 * @param schd
 	 */
+	// SWAP 3, TEAM 6
+	// This errors if the schedule passed in is missing data, not so much an error here as it is in main, bug fix is continuing in main.
 	public CalendarGUI(Schedule schd) {
 		this.schedule = schd;
 		this.scheduleMap = this.schedule.getSchedule();
@@ -339,6 +341,7 @@ public class CalendarGUI extends javax.swing.JFrame {
 		this.menuBar = new javax.swing.JMenuBar();
 		this.fileMenu = new javax.swing.JMenu();
 		this.saveChanges = new javax.swing.JMenuItem();
+		this.loadChanges = new javax.swing.JMenuItem();
 		this.undoChanges = new javax.swing.JMenuItem();
 		this.editMenu = new javax.swing.JMenu();
 		this.editWorkers = new javax.swing.JMenuItem();
@@ -405,6 +408,21 @@ public class CalendarGUI extends javax.swing.JFrame {
 			}
 		});
 		this.fileMenu.add(this.saveChanges);
+		
+		// SWAP 3, TEAM 6
+		// added the ability to load files from within the scheduler
+		// this also allows saving back ups of schedules
+		this.loadChanges.setAccelerator(javax.swing.KeyStroke.getKeyStroke(
+				java.awt.event.KeyEvent.VK_L,
+				java.awt.event.InputEvent.CTRL_MASK));
+		this.loadChanges.setText("Load Files");
+		this.loadChanges.addActionListener(new java.awt.event.ActionListener() {
+			@Override
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				loadFileActionPerformed(evt);
+			}
+		});
+		this.fileMenu.add(this.loadChanges);
 
 		this.undoChanges.setAccelerator(javax.swing.KeyStroke.getKeyStroke(
 				java.awt.event.KeyEvent.VK_Z,
@@ -646,6 +664,15 @@ public class CalendarGUI extends javax.swing.JFrame {
 	private void saveChangesActionPerformed(java.awt.event.ActionEvent evt) {
 		Main.dumpConfigFile();
 	}
+	
+	private void loadFileActionPerformed(java.awt.event.ActionEvent evt) {
+		Main.fileChange();
+		try {
+			Main.recallConfigFile();
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * @param evt
@@ -685,6 +712,7 @@ public class CalendarGUI extends javax.swing.JFrame {
 	private javax.swing.JPopupMenu popup;
 	private javax.swing.JButton previousMonthButton;
 	private javax.swing.JMenuItem saveChanges;
+	private javax.swing.JMenuItem loadChanges;
 	private javax.swing.JTable scheduleTable;
 	private javax.swing.JMenuItem undoChanges;
 }
